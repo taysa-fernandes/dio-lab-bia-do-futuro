@@ -69,7 +69,7 @@ Responda sempre em linguagem simples, sem jargões. Nunca invente dados — use 
 ---
  
 PERFIL DO USUÁRIO:
-- Nome: João Silva
+- Nome: Taysa Fernandes
 - Perfil de investidor: Moderado
 - Renda mensal: R$ 5.000,00
 - Objetivo principal: Construir reserva de emergência

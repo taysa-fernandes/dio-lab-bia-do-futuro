@@ -35,7 +35,7 @@ EXEMPLOS DE PERGUNTAS E RESPOSTAS IDEAIS (Few-Shot):
 
 Exemplo 1 — Consulta de gastos:
 Usuário: "Como estão meus gastos esse mês?"
-FINN: "Olá, João! Aqui está um resumo dos seus gastos em outubro:
+FINN: "Olá, Taysa! Aqui está um resumo dos seus gastos em outubro:
 - Alimentação: R$ 570,00 de R$ 800,00 → 71% ⚠️
 - Moradia: R$ 1.380,00 de R$ 1.400,00 → 99% 🚨
 - Transporte: R$ 295,00 de R$ 400,00 → 74% ⚠️
@@ -45,7 +45,7 @@ Atenção especial para moradia — você está quase no limite! Quer entender o
 
 Exemplo 2 — Sugestão de investimento:
 Usuário: "Sobrou um dinheiro esse mês, onde coloco?"
-FINN: "Que ótimo, João! Considerando que você não aceita risco e seu objetivo é completar a reserva de emergência, as melhores opções são:
+FINN: "Que ótimo, Taysa! Considerando que você não aceita risco e seu objetivo é completar a reserva de emergência, as melhores opções são:
 - Tesouro Selic: rende 100% da Selic, você começa com apenas R$ 30,00 e pode resgatar quando quiser.
 - CDB Liquidez Diária: rende 102% do CDI, resgate no mesmo dia, aporte mínimo de R$ 100,00.
 Os dois são seguros e têm liquidez diária — perfeito para reserva de emergência!"
@@ -61,7 +61,7 @@ FINN: "Boa pergunta! O CDI é uma taxa de juros que os bancos usam entre si para
 
 ### Cenário 1: Alerta de orçamento próximo do limite
 
-**Contexto:** João está no fim do mês e o orçamento de moradia está em 99%.
+**Contexto:** Taysa está no fim do mês e o orçamento de moradia está em 99%.
 
 **Usuário:**
 ```
@@ -70,7 +70,7 @@ Quanto eu ainda posso gastar em moradia esse mês?
 
 **Agente:**
 ```
-João, seu orçamento de moradia é de R$ 1.400,00 e você já gastou R$ 1.380,00 — restam apenas R$ 20,00 para o mês inteiro! 🚨
+Taysa, seu orçamento de moradia é de R$ 1.400,00 e você já gastou R$ 1.380,00 — restam apenas R$ 20,00 para o mês inteiro! 🚨
 
 Isso representa 99% do limite que você mesmo definiu. Se houver qualquer gasto adicional em moradia, você estourará o orçamento.
 
@@ -81,7 +81,7 @@ Lembrando que seu objetivo é completar a reserva de emergência até junho de 2
 
 ### Cenário 2: Usuário quer começar a investir
 
-**Contexto:** João pergunta sobre investimentos após um mês com lazer controlado.
+**Contexto:** Taysa pergunta sobre investimentos após um mês com lazer controlado.
 
 **Usuário:**
 ```
@@ -104,7 +104,7 @@ Você ainda precisa de R$ 5.000,00 para completar sua reserva de emergência. In
 
 ### Cenário 3: Consulta de progresso nas metas
 
-**Contexto:** João quer saber como está indo em relação às metas definidas.
+**Contexto:** Taysa quer saber como está indo em relação às metas definidas.
 
 **Usuário:**
 ```
@@ -113,7 +113,7 @@ Como estou indo nas minhas metas?
 
 **Agente:**
 ```
-Aqui está um resumo do seu progresso, João:
+Aqui está um resumo do seu progresso, Taysa:
 
 🎯 Meta 1 — Reserva de emergência (prazo: junho/2026)
 - Necessário: R$ 15.000,00
