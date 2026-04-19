@@ -1,31 +1,65 @@
 # Código da Aplicação
 
-Esta pasta contém o código do seu agente financeiro.
+Esta pasta contém o código do agente financeiro **FINN** — controle de gastos e alertas para investidores iniciantes.
 
-## Estrutura Sugerida
+## Estrutura
 
 ```
 src/
-├── app.py              # Aplicação principal (Streamlit/Gradio)
-├── agente.py           # Lógica do agente
-├── config.py           # Configurações (API keys, etc.)
-└── requirements.txt    # Dependências
+├── app.py              # Interface principal (Streamlit)
+├── agente.py           # Lógica do agente: carregamento de dados, alertas e chamada à API
+├── config.py           # Configurações: caminhos, modelo e limiares de alerta
+├── requirements.txt    # Dependências do projeto
+└── .env.example        # Modelo do arquivo de variáveis de ambiente
 ```
 
-## Exemplo de requirements.txt
+## Pré-requisitos
 
-```
-streamlit
-openai
-python-dotenv
-```
+- Python 3.10+
+- Conta gratuita no [Groq Console](https://console.groq.com) para obter a API key
 
 ## Como Rodar
 
+**1. Clone o repositório e entre na pasta:**
 ```bash
-# Instalar dependências
-pip install -r requirements.txt
+git clone https://github.com/taysa-fernandes/dio-lab-bia-do-futuro.git
+cd dio-lab-bia-do-futuro
+```
 
-# Rodar a aplicação
+**2. Crie o arquivo `.env` com sua chave:**
+```bash
+cp src/.env.example src/.env
+# Abra o .env e preencha com sua chave Groq
+```
+
+```env
+GROQ_API_KEY=sua_chave_aqui
+```
+
+**3. Instale as dependências:**
+```bash
+pip install -r src/requirements.txt
+```
+
+**4. Rode a aplicação:**
+```bash
+cd src
 streamlit run app.py
 ```
+
+A aplicação abrirá automaticamente em `http://localhost:8501`.
+
+## Dependências
+
+```
+streamlit==1.35.0
+requests==2.31.0
+pandas==2.2.2
+python-dotenv==1.0.1
+```
+
+## Observações
+
+- O arquivo `.env` **não deve ser commitado** — ele já está no `.gitignore`
+- Os arquivos de dados (`data/`) devem estar na raiz do projeto, um nível acima de `src/`
+- O modelo utilizado é o `llama3-70b-8192` via API do Groq
