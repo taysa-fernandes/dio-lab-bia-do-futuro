@@ -1,149 +1,96 @@
-# 🤖 Agente Financeiro Inteligente com IA Generativa
+# FINN · Agente Financeiro Inteligente
 
-## Contexto
+## Sobre o projeto
 
-Os assistentes virtuais no setor financeiro estão evoluindo de simples chatbots reativos para **agentes inteligentes e proativos**. Neste desafio, você vai idealizar e prototipar um agente financeiro que utiliza IA Generativa para:
+FINN é um protótipo de agente financeiro educativo desenvolvido em Streamlit. O aplicativo carrega dados de exemplo do cliente, gera alertas de orçamento e permite conversar com um modelo de linguagem via API Groq.
 
-- **Antecipar necessidades** ao invés de apenas responder perguntas
-- **Personalizar** sugestões com base no contexto de cada cliente
-- **Cocriar soluções** financeiras de forma consultiva
-- **Garantir segurança** e confiabilidade nas respostas (anti-alucinação)
+O foco atual do projeto é:
+- visualização de gastos por categoria
+- geração de alertas orçamentários
+- suporte a metas e perfil de investidor
+- chat interativo com respostas baseadas em dados locais
 
-> [!TIP]
-> Na pasta [`examples/`](./examples/) você encontra referências de implementação para cada etapa deste desafio.
+## Como usar
 
----
+1. Instale as dependências:
 
-## O Que Você Deve Entregar
+```bash
+pip install -r src/requirements.txt
+```
 
-### 1. Documentação do Agente
+2. Crie um arquivo `.env` na pasta `src/` com sua chave Groq:
 
-Defina **o que** seu agente faz e **como** ele funciona:
+```bash
+GROQ_API_KEY=sua_chave_aqui
+```
 
-- **Caso de Uso:** Qual problema financeiro ele resolve? (ex: consultoria de investimentos, planejamento de metas, alertas de gastos)
-- **Persona e Tom de Voz:** Como o agente se comporta e se comunica?
-- **Arquitetura:** Fluxo de dados e integração com a base de conhecimento
-- **Segurança:** Como evitar alucinações e garantir respostas confiáveis?
+3. Execute o app:
 
-📄 **Template:** [`docs/01-documentacao-agente.md`](./docs/01-documentacao-agente.md)
+```bash
+cd src
+streamlit run app.py
+```
 
----
+> Se `GROQ_API_KEY` não estiver definida, o app exibirá um erro e não carregará.
 
-### 2. Base de Conhecimento
-
-Utilize os **dados mockados** disponíveis na pasta [`data/`](./data/) para alimentar seu agente:
-
-| Arquivo | Formato | Descrição |
-|---------|---------|-----------|
-| `transacoes.csv` | CSV | Histórico de transações do cliente |
-| `historico_atendimento.csv` | CSV | Histórico de atendimentos anteriores |
-| `perfil_investidor.json` | JSON | Perfil e preferências do cliente |
-| `produtos_financeiros.json` | JSON | Produtos e serviços disponíveis |
-
-Você pode adaptar ou expandir esses dados conforme seu caso de uso.
-
-📄 **Template:** [`docs/02-base-conhecimento.md`](./docs/02-base-conhecimento.md)
-
----
-
-### 3. Prompts do Agente
-
-Documente os prompts que definem o comportamento do seu agente:
-
-- **System Prompt:** Instruções gerais de comportamento e restrições
-- **Exemplos de Interação:** Cenários de uso com entrada e saída esperada
-- **Tratamento de Edge Cases:** Como o agente lida com situações limite
-
-📄 **Template:** [`docs/03-prompts.md`](./docs/03-prompts.md)
-
----
-
-### 4. Aplicação Funcional
-
-Desenvolva um **protótipo funcional** do seu agente:
-
-- Chatbot interativo (sugestão: Streamlit, Gradio ou similar)
-- Integração com LLM (via API ou modelo local)
-- Conexão com a base de conhecimento
-
-📁 **Pasta:** [`src/`](./src/)
-
----
-
-### 5. Avaliação e Métricas
-
-Descreva como você avalia a qualidade do seu agente:
-
-**Métricas Sugeridas:**
-- Precisão/assertividade das respostas
-- Taxa de respostas seguras (sem alucinações)
-- Coerência com o perfil do cliente
-
-📄 **Template:** [`docs/04-metricas.md`](./docs/04-metricas.md)
-
----
-
-### 6. Pitch
-
-Grave um **pitch de 3 minutos** (estilo elevador) apresentando:
-
-- Qual problema seu agente resolve?
-- Como ele funciona na prática?
-- Por que essa solução é inovadora?
-
-📄 **Template:** [`docs/05-pitch.md`](./docs/05-pitch.md)
-
----
-
-## Ferramentas Sugeridas
-
-Todas as ferramentas abaixo possuem versões gratuitas:
-
-| Categoria | Ferramentas |
-|-----------|-------------|
-| **LLMs** | [ChatGPT](https://chat.openai.com/), [Copilot](https://copilot.microsoft.com/), [Gemini](https://gemini.google.com/), [Claude](https://claude.ai/), [Ollama](https://ollama.ai/) |
-| **Desenvolvimento** | [Streamlit](https://streamlit.io/), [Gradio](https://www.gradio.app/), [Google Colab](https://colab.research.google.com/) |
-| **Orquestração** | [LangChain](https://www.langchain.com/), [LangFlow](https://www.langflow.org/), [CrewAI](https://www.crewai.com/) |
-| **Diagramas** | [Mermaid](https://mermaid.js.org/), [Draw.io](https://app.diagrams.net/), [Excalidraw](https://excalidraw.com/) |
-
----
-
-## Estrutura do Repositório
+## Estrutura do projeto
 
 ```
-📁 lab-agente-financeiro/
-│
+📁 dio-lab-bia-do-futuro
 ├── 📄 README.md
-│
-├── 📁 data/                          # Dados mockados para o agente
-│   ├── historico_atendimento.csv     # Histórico de atendimentos (CSV)
-│   ├── perfil_investidor.json        # Perfil do cliente (JSON)
-│   ├── produtos_financeiros.json     # Produtos disponíveis (JSON)
-│   └── transacoes.csv                # Histórico de transações (CSV)
-│
-├── 📁 docs/                          # Documentação do projeto
-│   ├── 01-documentacao-agente.md     # Caso de uso e arquitetura
-│   ├── 02-base-conhecimento.md       # Estratégia de dados
-│   ├── 03-prompts.md                 # Engenharia de prompts
-│   ├── 04-metricas.md                # Avaliação e métricas
-│   └── 05-pitch.md                   # Roteiro do pitch
-│
-├── 📁 src/                           # Código da aplicação
-│   └── app.py                        # (exemplo de estrutura)
-│
-├── 📁 assets/                        # Imagens e diagramas
-│   └── ...
-│
-└── 📁 examples/                      # Referências e exemplos
-    └── README.md
+├── 📁 src
+│   ├── 📄 app.py              # interface Streamlit do FINN
+│   ├── 📄 agente.py           # lógica do agente e chamada à API
+│   ├── 📄 config.py           # configuração de caminhos e variáveis
+│   └── 📄 requirements.txt    # dependências do projeto
+├── 📁 data
+│   ├── 📄 transacoes.csv
+│   ├── 📄 historico_atendimento.csv
+│   ├── 📄 perfil_investidor.json
+│   └── 📄 produtos_financeiros.json
+├── 📁 docs
+│   ├── 📄 01-documentacao-agente.md
+│   ├── 📄 02-base-conhecimento.md
+│   ├── 📄 03-prompts.md
+│   ├── 📄 04-metricas.md
+│   └── 📄 05-pitch.md
+├── 📁 assets
+└── 📁 examples
 ```
 
----
+## Dados usados
 
-## Dicas Finais
+O projeto utiliza os arquivos em `data/` como base de conhecimento:
 
-1. **Comece pelo prompt:** Um bom system prompt é a base de um agente eficaz
-2. **Use os dados mockados:** Eles garantem consistência e evitam problemas com dados sensíveis
-3. **Foque na segurança:** No setor financeiro, evitar alucinações é crítico
-4. **Teste cenários reais:** Simule perguntas que um cliente faria de verdade
-5. **Seja direto no pitch:** 3 minutos passam rápido, vá ao ponto
+- `transacoes.csv` — histórico de transações do cliente
+- `historico_atendimento.csv` — atendimentos anteriores
+- `perfil_investidor.json` — perfil, orçamento e metas do cliente
+- `produtos_financeiros.json` — lista de produtos financeiros disponíveis
+
+## Funcionamento atual
+
+1. `src/app.py` carrega os dados e exibe um dashboard com o perfil do usuário, metas e status de orçamento.
+2. `src/agente.py` calcula gastos mensais e gera alertas por categoria.
+3. O sistema monta um prompt estruturado para o modelo Groq usando todas as informações do usuário.
+4. O chat do FINN encaminha as mensagens para a API Groq e apresenta as respostas na interface.
+
+## Configuração e modelo
+
+- Chave de API: `GROQ_API_KEY` via `.env`
+- Modelo usado: `llama-3.3-70b-versatile`
+
+## Rodando no Windows
+
+No PowerShell:
+
+```powershell
+cd "c:\Users\taysa\Desktop\DIO\Bootcamp-Gen-AI\Assistente financeiro\dio-lab-bia-do-futuro\src"
+pip install -r requirements.txt
+streamlit run app.py
+```
+
+## Observações
+
+- O app atual depende de internet para a chamada à API Groq.
+- A lógica de alertas considera limites definidos em `perfil_investidor.json`.
+- O chat deve usar apenas os dados locais disponíveis e não inventar informações.

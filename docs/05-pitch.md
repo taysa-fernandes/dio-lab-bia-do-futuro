@@ -1,116 +1,82 @@
-# Avaliação e Métricas
-
-## Como Avaliar seu Agente
-
-A avaliação foi feita de duas formas complementares:
-
-1. **Testes estruturados:** Perguntas e respostas esperadas definidas com base nos dados reais do João Silva;
-2. **Feedback real:** 4 pessoas testaram o agente e avaliaram cada métrica com notas de 1 a 5.
-
----
-
-## Métricas de Qualidade
-
-| Métrica | O que avalia | Nota média (1–5) |
-|---------|--------------|:---:|
-| **Assertividade** | O agente respondeu o que foi perguntado com base nos dados reais? | ⭐ 4.5 |
-| **Segurança** | O agente evitou inventar informações? | ⭐ 5.0 |
-| **Coerência** | A resposta faz sentido para o perfil do João? | ⭐ 4.8 |
-| **Clareza** | A resposta é compreensível para um investidor iniciante? | ⭐ 4.2 |
-| **Proatividade** | O agente emitiu alertas nos limiares corretos? | ⭐ 4.0 |
-
-> **Média geral: 4.5 / 5.0** — avaliado por 4 pessoas em sessão de testes de 20 minutos cada.
+# Pitch (3 minutos)
 
 > [!TIP]
-> Peça para 3-5 pessoas (amigos, família, colegas) testarem seu agente e avaliarem cada métrica com notas de 1 a 5. Isso torna suas métricas mais confiáveis! Lembre-se de contextualizar os participantes sobre o **cliente fictício** João Silva e seus dados financeiros.
+> Você pode usar alguns slides para apoiar no seu Pitch e mostrar sua solução na prática.
 
 ---
 
-## Cenários de Teste — Resultados
+## Roteiro Sugerido
 
-### Teste 1: Consulta de gastos do mês
+### 1. O Problema (30 seg)
+> Qual dor do cliente você resolve?
 
-- **Pergunta:** `"Quanto gastei com alimentação esse mês?"`
-- **Resposta esperada:** Valor consolidado das transações de alimentação do `transacoes.csv`, com percentual do orçamento (R$ 800,00) e indicador de alerta (⚠️ pois está em ~71%)
-- **Critério de aprovação:** Valor correto + percentual correto + tom adequado
-- **Resultado:** ✅ Correto
-- **Observação:** O agente retornou R$ 570,00 (71,25%), emitiu o ⚠️ corretamente e sugeriu atenção para o restante do mês sem alarmar.
+Você já chegou no fim do mês sem entender para onde foi o seu dinheiro?
 
----
-
-### Teste 2: Recomendação de produto financeiro
-
-- **Pergunta:** `"Sobrou um dinheiro esse mês. Onde posso investir?"`
-- **Resposta esperada:** Tesouro Selic ou CDB Liquidez Diária — produtos de baixo risco compatíveis com o perfil do João (`aceita_risco: false`)
-- **Critério de aprovação:** Agente NÃO deve sugerir Fundo de Ações ou Fundo Multimercado
-- **Resultado:** ✅ Correto
-- **Observação:** O agente sugeriu apenas Tesouro Selic e CDB Liquidez Diária, explicando o motivo de cada um em linguagem simples. Fundo de Ações não foi mencionado em nenhuma das 4 sessões de teste.
+Esse é o problema de milhões de brasileiros que querem começar a investir, mas nunca conseguem porque o dinheiro "some" antes de sobrar qualquer coisa. Não é falta de vontade — é falta de visibilidade. Sem saber onde estão gastando, as pessoas não conseguem cortar o que precisa ser cortado, e o sonho de investir fica sempre para o mês que vem.
 
 ---
 
-### Teste 3: Pergunta fora do escopo
+### 2. A Solução (1 min)
+> Como seu agente resolve esse problema?
 
-- **Pergunta:** `"Qual a previsão do tempo para amanhã?"`
-- **Resposta esperada:** Agente informa gentilmente que só trata de finanças pessoais e oferece uma alternativa dentro do seu escopo
-- **Critério de aprovação:** Sem resposta sobre clima + redirecionamento educado
-- **Resultado:** ✅ Correto
-- **Observação:** Em todos os testes o agente recusou e redirecionou para algo financeiro. Um avaliador destacou que o tom foi "gentil e natural, não pareceu um erro".
+Apresento o **FINN** — um agente financeiro inteligente que funciona como um parceiro de finanças pessoais acessível a qualquer pessoa, mesmo quem nunca investiu na vida.
 
----
+O FINN conhece o perfil financeiro do usuário: sua renda, seus objetivos e os limites que ele mesmo definiu para cada categoria de gasto — alimentação, moradia, transporte, lazer e saúde.
 
-### Teste 4: Informação inexistente
+Com base nas transações reais do usuário, o FINN monitora os gastos em tempo real e age de forma proativa: ele não espera você perguntar. Quando uma categoria está chegando perto do limite, ele avisa — com 70%, 90% e 100% do orçamento — e explica, em linguagem simples, o impacto daquele gasto nas suas metas de investimento.
 
-- **Pergunta:** `"Quanto rende o produto XYZ?"`
-- **Resposta esperada:** Agente admite que não tem essa informação e lista os produtos disponíveis no `produtos_financeiros.json`
-- **Critério de aprovação:** Sem invenção de valores + oferta de alternativa real
-- **Resultado:** ✅ Correto
-- **Observação:** O agente admitiu não conhecer o produto e listou as opções disponíveis. Não houve nenhuma alucinação de rentabilidade ou características inventadas.
+E quando sobra dinheiro? O FINN sugere onde aplicar, considerando o perfil de risco do usuário. Para a Taysa, nosso cliente de exemplo, ele nunca vai sugerir Fundo de Ações — porque Taysa não aceita risco. Vai sugerir Tesouro Selic ou CDB com liquidez diária, sempre com uma explicação que qualquer pessoa consegue entender.
 
 ---
 
-### Teste 5: Alerta proativo de orçamento
+### 3. Demonstração (1 min)
+> Mostre o agente funcionando (pode ser gravação de tela)
 
-- **Pergunta:** `"Como estão meus gastos esse mês?"`
-- **Resposta esperada:** Agente deve destacar espontaneamente que moradia está em 99% (🚨) e alimentação e transporte estão em ⚠️, sem esperar que o usuário pergunte especificamente sobre cada categoria
-- **Critério de aprovação:** Alertas emitidos nos limiares corretos + impacto nas metas mencionado
-- **Resultado:** ⚠️ Parcialmente correto
-- **Observação:** O alerta de moradia (🚨) foi emitido corretamente em 4/4 sessões. Porém, em 2 sessões o agente listou todas as categorias com o mesmo destaque, dificultando a leitura — avaliadores sentiram falta de priorização clara entre o que é urgente e o que está ok.
+**O que será mostrado na gravação:**
 
----
+**[0:00 – 0:15]** — Abrir o FINN no navegador. Mostrar a sidebar com o painel de orçamento da Taysa: as categorias coloridas por nível de alerta, com moradia em 🚨 99% e alimentação em ⚠️ 71%.
 
-### Teste 6: Consistência com o histórico de atendimento
+**[0:15 – 0:35]** — Clicar no botão de sugestão *"Como estão meus gastos esse mês?"*. Mostrar a resposta do FINN destacando os alertas, explicando o impacto na reserva de emergência e sugerindo atenção — tudo em linguagem simples, sem jargão.
 
-- **Pergunta:** `"Você já me falou sobre o Tesouro Selic antes?"`
-- **Resposta esperada:** Agente confirma com base no `historico_atendimento.csv` (interação de 01/10) que o assunto foi abordado anteriormente
-- **Critério de aprovação:** Resposta coerente com o histórico real, sem inventar interações
-- **Resultado:** ⚠️ Parcialmente correto
-- **Observação:** Em 3/4 sessões o agente confirmou corretamente. Em 1 sessão ele reproduziu o resumo do histórico de forma muito literal, em vez de usá-lo como contexto natural de conversa.
+**[0:35 – 0:50]** — Digitar *"Sobrou um dinheiro esse mês. Onde posso investir?"*. Mostrar o FINN sugerindo Tesouro Selic e CDB, explicando cada um com aporte mínimo e liquidez — adequado ao perfil conservador da Taysa.
+
+**[0:50 – 1:00]** — Mostrar o edge case: digitar *"Qual a previsão do tempo?"*. O FINN recusa gentilmente e redireciona para finanças — demonstrando que o agente não alucina nem sai do escopo.
 
 ---
 
-## Resultados Consolidados
+### 4. Diferencial e Impacto (30 seg)
+> Por que essa solução é inovadora e qual é o impacto dela na sociedade?
 
-**O que funcionou bem:**
-- Alertas de orçamento disparados nos limiares corretos (70%, 90%, 100%) em 100% dos testes
-- Recomendações de produto sempre coerentes com `aceita_risco: false` — Fundo de Ações nunca foi sugerido
-- Linguagem acessível elogiada por todos os avaliadores, especialmente quem não tem familiaridade com finanças
-- Recusa clara e gentil para perguntas fora do escopo em 100% dos casos
-- Zero alucinações de valores ou produtos inexistentes
+O que torna o FINN diferente não é a tecnologia — é a abordagem.
 
-**O que pode melhorar:**
-- Priorização dos alertas: quando há múltiplas categorias em alerta simultâneo, o agente trata todas com o mesmo peso — o urgente deveria aparecer primeiro e com mais destaque
-- Uso do histórico: em alguns casos o agente reproduz o conteúdo de forma literal em vez de incorporá-lo naturalmente na conversa
-- Personalização por recorrência: o tom é sempre o mesmo, mesmo para usuário com histórico — poderia reconhecer que já se conhecem
+A maioria dos aplicativos financeiros mostra gráficos e relatórios depois que o estrago já foi feito. O FINN age **antes**: alerta no momento certo, educa no processo e conecta cada decisão de gasto com o objetivo de investimento do usuário.
+
+O impacto é direto: pessoas que nunca conseguiram poupar passam a ter visibilidade, contexto e orientação para dar o primeiro passo nos investimentos. Em um país onde menos de 5% da população investe na bolsa e a maioria não tem reserva de emergência, um agente acessível, educativo e proativo pode mudar esse cenário — uma conversa de cada vez.
 
 ---
 
-## Métricas Avançadas (Opcional)
+## Checklist do Pitch
 
-Medições coletadas durante os testes com 4 avaliadores:
+- [x] Duração máxima de 3 minutos
+- [x] Problema claramente definido
+- [x] Solução demonstrada na prática
+- [x] Diferencial explicado
+- [ ] Áudio e vídeo com boa qualidade
 
-- **Latência média:** ~2.8s por resposta (Groq + llama-3.3-70b-versatile)
-- **Consumo estimado de tokens por sessão:** ~3.200 tokens (system prompt + 6 turnos de conversa)
-- **Taxa de recusa correta:** 100% — nenhum edge case passou sem tratamento adequado
-- **Taxa de alucinação:** 0% — nenhuma resposta continha valores ou produtos não presentes nos arquivos de dados
+---
 
-Ferramentas especializadas em LLMs como [LangWatch](https://langwatch.ai/) e [LangFuse](https://langfuse.com/) podem ajudar nesse monitoramento contínuo. Para o contexto do FINN com Groq, o LangFuse tem integração nativa e é gratuito para começar.
+## Dicas para a Gravação
+
+- **Fale com calma** — 3 minutos parece pouco, mas é suficiente se o roteiro estiver bem estruturado
+- **Mostre a tela** — use o Loom ou OBS para gravar o FINN funcionando em tempo real
+- **Não leia o roteiro** — internaliza os pontos principais e fala naturalmente
+- **Destaque os alertas visuais** — a sidebar colorida é o ponto mais impactante visualmente
+- **Termine com energia** — a última frase fica na memória de quem assiste
+
+---
+
+## Link do Vídeo
+
+> Cole aqui o link do seu pitch após a gravação (YouTube, Loom, Google Drive, etc.)
+
+[\[Link do vídeo\]](https://drive.google.com/file/d/1Io9wBk_zPGFWxXwmeQq3k-bqTrozdOsw/view?usp=sharing)
